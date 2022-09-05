@@ -1,5 +1,5 @@
 :root{
-    --azul:#440a00;
+    --burdeo:#440a00;
     --azulOscuro:#ffffff;
     --azulGris:#cc9d92;
     --blanco:#fff;
@@ -68,7 +68,7 @@ body{
 
 .formulario{
     padding: 50px;
-    background-color: var(--azul);
+    background-color: var(--burdeo);
 }
 .texto-formulario h2, .input label, .password-olvidada a, .texto-formulario p{
     color: var(--blanco);
