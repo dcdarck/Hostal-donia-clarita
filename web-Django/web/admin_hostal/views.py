@@ -10,13 +10,15 @@ def nosotros(request):
 def proveedores(request):
     return render(request, 'proveedores/index_prov.html')
 def crearProv(request):
-    return render(request, 'proveedores/crear_prov.html')    
+    return render(request, 'proveedores/crear_prov.html')
+def editarProv(request):
+    return render(request, 'proveedores/editar_prov.html')          
 
-def ind_empleados(request):
+def empleados(request):
     return render(request, 'empleados/index_emp.html')    
 
-def ind_clientes(request):
+def clientes(request):
     return render(request, 'clientes/index_cl.html')
 
-def ind_huespedes(request):
+def huespedes(request):
     return render(request, 'huespedes/index_hues.html')

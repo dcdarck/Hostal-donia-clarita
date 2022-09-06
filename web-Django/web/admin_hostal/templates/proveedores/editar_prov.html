@@ -4,6 +4,18 @@
 
 {% block contenido %}
 
-Formulario para editar proveedor
+<div class="card">
+    <div class="card-header">
+        Agregar un proveedor
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del proveedor</h4>
+        {% include 'proveedores/form_prov.html' %}
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
+
 
 {% endblock %}

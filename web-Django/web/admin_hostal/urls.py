@@ -7,10 +7,11 @@ urlpatterns = [
     
     path('proveedores', views.proveedores, name='proveedores'),
     path('proveedores/crearProv', views.crearProv, name='crearProv'),
+    path('proveedores/editarProv', views.editarProv, name='editarProv'),
 
-    path('ind_empleados', views.ind_empleados, name='ind_empleados'),
+    path('empleados', views.empleados, name='empleados'),
     
-    path('ind_huespedes', views.ind_huespedes, name='ind_huespedes'),
+    path('huespedes', views.huespedes, name='huespedes'),
     
-    path('ind_clientes', views.ind_clientes, name='ind_clientes')
+    path('clientes', views.clientes, name='clientes')
 ]
