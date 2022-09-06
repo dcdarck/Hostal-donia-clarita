@@ -7,9 +7,9 @@ def inicio(request):
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
 
-def ind_proveedores(request):
+def proveedores(request):
     return render(request, 'proveedores/index_prov.html')
-def crear_proveedores(request):
+def crearProv(request):
     return render(request, 'proveedores/crear_prov.html')    
 
 def ind_empleados(request):
