@@ -4,6 +4,18 @@
 
 {% block contenido %}
 
-Formulario para agregar nuevo huésped
+<div class="card">
+    <div class="card-header">
+        Agregar un huésped
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del huésped</h4>
+        {% include 'huespedes/form_hues.html' %}
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
+
 
 {% endblock %}

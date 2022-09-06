@@ -4,6 +4,17 @@
 
 {% block contenido %}
 
-Formulario para editar clientes
+<div class="card">
+    <div class="card-header">
+        Editar un cliente
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del cliente</h4>
+        {% include 'clientes/form_cl.html' %}
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
 
 {% endblock %}
