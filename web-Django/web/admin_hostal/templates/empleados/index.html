@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Empleados {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        Lista Empleados
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Empleados</h4>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Rut</th>
+                        <th>Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido </th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>15.456.456-3</td>
+                        <td>Francisco javier</td>
+                        <td>Jasi</td>
+                        <td>Kyrgios</td>
+                        <td>f.jasi@correo.com</td>
+                        <td>912345678</td>
+                        <td>Editar | Borrar</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}
