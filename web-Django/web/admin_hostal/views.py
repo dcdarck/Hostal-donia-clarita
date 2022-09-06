@@ -6,11 +6,17 @@ def inicio(request):
     return render(request, 'paginas/inicio.html')
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
-def proveedores(request):
-    return render(request, 'proveedores/index.html')
-def empleados(request):
-    return render(request, 'empleados/index.html')    
-def clientes(request):
-    return render(request, 'clientes/index.html')
-def huespedes(request):
-    return render(request, 'huespedes/index.html')
+
+def ind_proveedores(request):
+    return render(request, 'proveedores/index_prov.html')
+def crear_proveedores(request):
+    return render(request, 'proveedores/crear_prov.html')    
+
+def ind_empleados(request):
+    return render(request, 'empleados/index_emp.html')    
+
+def ind_clientes(request):
+    return render(request, 'clientes/index_cl.html')
+
+def ind_huespedes(request):
+    return render(request, 'huespedes/index_hues.html')
