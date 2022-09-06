@@ -3,7 +3,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def inicio(request):
-    return HttpResponse("<h1>Bienvenido al admin</h1>")
+    return render(request, 'paginas/inicio.html')
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
 def proveedores(request):
