@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Proveedores {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        Lista Proveedores
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Proveedores</h4>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Direccion</th>
+                        <th>Rubro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Francisco javier</td>
+                        <td>fjavier@correo.com</td>
+                        <td>912345678</td>
+                        <td>direccion #123</td>
+                        <td>Carnes</td>
+                        <td>Editar | Borrar</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}
