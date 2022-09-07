@@ -26,7 +26,8 @@ class Huesped(models.Model):
     seg_apell_hue = models.CharField(max_length=100, verbose_name='Segundo Apellido', null=True)
     email_hue = models.CharField(max_length=100, verbose_name='Email', null=True)
     telefono_hue = models.CharField(max_length=100, verbose_name='Telefono', null=True)
-    direccion_prov = models.CharField(max_length=100, verbose_name='Direccion', null=True)
+    direccion_hue = models.CharField(max_length=100, verbose_name='Direccion', null=True)
+    cliente_hue = models.CharField(max_length=100, verbose_name='Cliente', null=True)
 
 class Cliente(models.Model):
     id_cli = models.AutoField(primary_key=True)

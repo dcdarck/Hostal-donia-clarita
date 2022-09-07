@@ -1,3 +1,4 @@
+#Código creado por Agustín llaña, Matías Quidel, Jesús Reyes
 from django.urls import path
 from . import views
 
@@ -14,6 +15,10 @@ urlpatterns = [
     path('empleados', views.empleados, name='empleados'),
     
     path('huespedes', views.huespedes, name='huespedes'),
-    
+    path('huespedes/crearHues', views.crearHues, name='crearHues'),
+    path('huespedes/editarHues', views.editarHues, name='editarHues'),
+    path('eliminarHues/<int:id>', views.eliminarHues, name='eliminarHues'),
+    path('huespedes/editarHues/<int:id_hue>', views.editarHues, name='editarHue'),
+
     path('clientes', views.clientes, name='clientes')
 ]

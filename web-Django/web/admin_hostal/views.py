@@ -1,14 +1,16 @@
+#Código creado por Agustín llaña, Matías Quidel, Jesús Reyes
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Proveedor
-from .forms import ProveedorForm
+from .models import Huesped, Proveedor
+from .forms import ProveedorForm, HuespedForm
 # Create your views here.
 
 def inicio(request):
     return render(request, 'paginas/inicio.html')
 def nosotros(request):
     return render(request, 'paginas/nosotros.html')
-
+#Proveedores
 def proveedores(request):
     Proveedores = Proveedor.objects.all()
     print (Proveedores)
@@ -41,5 +43,29 @@ def empleados(request):
 def clientes(request):
     return render(request, 'clientes/index_cl.html')
 
+#Huespedes
+
 def huespedes(request):
-    return render(request, 'huespedes/index_hues.html')
+    Huespedes = Huesped.objects.all()
+    print (Huespedes)
+    return render(request, 'huespedes/index_hues.html', {'Huespedes' : Huespedes})
+
+def crearHues(request):
+    formulario = HuespedForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('huespedes')
+    return render(request, 'huespedes/crear_hues.html', {'formulario': formulario})
+
+def editarHues(request, id):
+    huesped = Huesped.objects.get(id_hue=id)
+    formulario = HuespedForm(request.POST or None, request.FILES or None, instance=huesped)
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        return redirect('huespedes')
+    return render(request, 'huespedes/editar_hues.html', {'formulario': formulario})          
+
+def eliminarHues(request, id):
+    huespedes = Huesped.objects.get(id_hue=id)
+    huespedes.delete()
+    return redirect('huespedes')

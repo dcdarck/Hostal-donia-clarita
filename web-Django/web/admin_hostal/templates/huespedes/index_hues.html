@@ -1,3 +1,4 @@
+<!--Código creado por Agustín llaña, Matías Quidel, Jesús Reyes-->
 {% extends "base.html" %}
 
 {% block titulo %} Lista de huéspedes {% endblock %}
@@ -6,7 +7,7 @@
 
 <div class="card">
     <div class="card-header">
-        Lista Huéspedes
+        <a name="" id="" class="btn btn-success" href="{% url 'crearHues' %}" role="button">Agregar nuevo huesped</a>
     </div>
     <div class="card-body">
         <h4 class="card-title">Huéspedes</h4>
@@ -27,18 +28,25 @@
                 </tr>
             </thead>
             <tbody>
+
+                {% for Huesped in Huespedes %}
                 <tr>
-                    <td>1</td>
-                    <td>11.111.111-1</td>
-                    <td>Juan</td>
-                    <td>Soto</td>
-                    <td>Soto</td>
-                    <td>huesped@gmail.com</td>
-                    <td>912345678</td>
-                    <td>casa #332</td>
-                    <td>Cencosud</td>
-                    <td>Editar | Borrar</td>
+                    <td>{{ Huesped.id_hue }}</td>
+                    <td>{{ Huesped.rut_hue }}</td>
+                    <td>{{ Huesped.nombre_hue }}</td>
+                    <td>{{ Huesped.pri_apell_hue }}</td>
+                    <td>{{ Huesped.seg_apell_hue }}</td>
+                    <td>{{ Huesped.email_hue }}</td>
+                    <td>{{ Huesped.telefono_hue }}</td>
+                    <td>{{ Huesped.direccion_hue }}</td>
+                    <td>{{ Huesped.cliente_hue }}</td>
+                    <td>
+                        <a name="" id="" class="btn btn-info" href="{% url 'editarHues' %}" role="button">Editar</a>
+                        |
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminarHues' Huesped.id_hue %}" role="button">Eliminar</a>
+                    </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
 
