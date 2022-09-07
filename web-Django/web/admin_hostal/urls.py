@@ -9,7 +9,7 @@ urlpatterns = [
     path('proveedores/crearProv', views.crearProv, name='crearProv'),
     path('proveedores/editarProv', views.editarProv, name='editarProv'),
     path('eliminarProv/<int:id>', views.eliminarProv, name='eliminarProv'),
-    path('proveedores/editarProv/<int:id>', views.editarProv, name='editarProv'),
+    path('proveedores/editarProv/<int:id_proveedor>', views.editarProv, name='editarProv'),
 
     path('empleados', views.empleados, name='empleados'),
     

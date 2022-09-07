@@ -33,10 +33,11 @@
                     <td>{{ Proveedor.telefono }}</td>
                     <td>{{ Proveedor.direccion }}</td>
                     <td>{{ Proveedor.rubro }}</td>
-                    <td> <a name="" id="" class="btn btn-info" href="{% url 'editarProv' proveedor.id %}" role="button">Editar</a>
-                         |
-                         <a name="" id="" class="btn btn-danger" href="{% url 'eliminarProv' proveedor.id %}" role="button">Eliminar</a>
-                        </td>
+                    <td> 
+                        <a name="" id="" class="btn btn-info" href="{% url 'editarProv' %}" role="button">Editar</a>
+                        |
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminarProv' Proveedor.id_proveedor %}" role="button">Eliminar</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

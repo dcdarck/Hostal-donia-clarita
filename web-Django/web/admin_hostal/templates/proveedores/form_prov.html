@@ -16,10 +16,11 @@
 
 
     </div>
-    <div class="col-12 help-text"> {{campo.errors}} </div>
+    <div class="col-12 help-text"> {{ campo.errors }} </div>
   {% endfor %}
 
-   <input name="" id="" class="btn btn-success" type="button" value="Enviar información">
+   <input name="" id="" class="btn btn-success" type="submit" value="Enviar información">
+   <a name="" id="" class="btn btn-danger" href="{% url 'proveedores' %}" role="button">Cancelar</a>
 
 </form>
 

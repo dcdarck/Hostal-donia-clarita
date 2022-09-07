@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'dona_clarita',
         'USER': 'hostal@%',
         'PASSWORD':'gato',
-        'HOST':'35.174.107.194',
+        'HOST':'52.0.232.251',
         'PORT':'3306'
     }
 }
