@@ -24,18 +24,21 @@
                 </tr>
             </thead>
             <tbody>
+
+                {% for Proveedor in Proveedores %}
                 <tr>
-                    <td>1</td>
-                    <td>Francisco javier</td>
-                    <td>fjavier@correo.com</td>
-                    <td>912345678</td>
-                    <td>direccion #123</td>
-                    <td>Carnes</td>
-                    <td> <a name="" id="" class="btn btn-info" href="{% url 'editarProv' %}" role="button">Editar</a>
+                    <td>{{ Proveedor.id_proveedor }}</td>
+                    <td>{{ Proveedor.nombre_prov }}</td>
+                    <td>{{ Proveedor.email }}</td>
+                    <td>{{ Proveedor.telefono }}</td>
+                    <td>{{ Proveedor.direccion }}</td>
+                    <td>{{ Proveedor.rubro }}</td>
+                    <td> <a name="" id="" class="btn btn-info" href="{% url 'editarProv' proveedor.id %}" role="button">Editar</a>
                          |
-                         <a name="" id="" class="btn btn-danger" href="#" role="button">Eliminar</a>
+                         <a name="" id="" class="btn btn-danger" href="{% url 'eliminarProv' proveedor.id %}" role="button">Eliminar</a>
                         </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
 
