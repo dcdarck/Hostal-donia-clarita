@@ -1,41 +1,25 @@
 <form enctype="multipart/form-data" method="post">
-
+  {% csrf_token %}
+  {% for campo in formulario %}
     <div class="mb-3">
-      <label for="" class="form-label">ID:</label>
+      <label for="" class="form-label">{{ campo.label }}:</label>
 
-      <input type="number"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="ID">
+      <input 
+      type="{{ campo.field.widget.input_type }}"
+        class="form-control"
+        name="{{ campo.name }}"
+        id=""
+        aria-describedby="helpId"
+        placeholder= "{{ campo.label }}" 
+        value="{{ campo.value | default:'' }}"
+        />
 
-      <label for="" class="form-label">Rut empresa:</label>
 
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Rut empresa">
-      
-      <label for="" class="form-label">Nombre empresa:</label>
-
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Nombre empresa"> 
-    
-      <label for="" class="form-label">Razón social:</label>
-
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Razón social">   
-      
-      <label for="" class="form-label">Email:</label>
-
-      <input type="email"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Email">
-        
-      <label for="" class="form-label">Teléfono:</label>
-
-      <input type="number"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Teléfono">
-
-      <label for="" class="form-label">Dirección:</label>
-
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Dirección">
-      
     </div>
+    <div class="col-12 help-text"> {{ campo.errors }} </div>
+  {% endfor %}
+
+   <input name="" id="" class="btn btn-success" type="submit" value="Enviar información">
+   <a name="" id="" class="btn btn-danger" href="{% url 'clientes' %}" role="button">Cancelar</a>
 
 </form>
