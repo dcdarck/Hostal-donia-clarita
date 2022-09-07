@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Proveedor
-from .forms import ProveedorForm
+from .models import Proveedor, Empleado, Cliente, Huesped
+from .forms import EmpleadoForm, ProveedorForm, ClienteForm, HuespedForm
 # Create your views here.
 
 def inicio(request):
@@ -34,12 +34,56 @@ def eliminarProv(request, id):
     proveedores.delete()
     return redirect('proveedores')
 
-
 def empleados(request):
-    return render(request, 'empleados/index_emp.html')    
+    empleados = Empleado.objects.all()
+    print(empleados)
+    return render(request, 'empleados/index_emp.html')
+
+def crearEmp(request):
+    formulario = EmpleadoForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('empleados')
+    return render(request, 'empleados/crear_emp.html', {'formulario': formulario})
+
+def editarEmp(request, id):
+    empleados = Empleado.objects.get(id_empleado=id)
+    formulario = EmpleadoForm(request.POST or None, request.FILES or None, instance=empleados)
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        return redirect('empleados')
+    return render(request, 'empleados/editar_emp.html', {'formulario': formulario})
+
+def eliminarEmp(request, id):
+    empleados = Empleado.objects.get(id_empleado=id)
+    empleados.delete()
+    return redirect('empleados')
+
 
 def clientes(request):
+    clientes = Cliente.objects.all()
+    print(clientes)
     return render(request, 'clientes/index_cl.html')
+
+def crearCli(request):
+    formulario = ClienteForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('clientes')
+    return render(request, 'clientes/crear_cli.html', {'formulario': formulario})
+
+def editarCli(request):
+    clientes = Cliente.objects.get(id_cliente=id)
+    formulario = ClienteForm(request.POST or None, request.FILES or None, instance=clientes)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('clientes')
+    return render(request, 'clientes/crear_cli.html', {'formulario': formulario})
+
+def eliminarCli(request):
+    clientes = Cliente.objects.get(id_cliente=id)
+    clientes.delete()
+    return redirect('clientes')
 
 def huespedes(request):
     return render(request, 'huespedes/index_hues.html')
