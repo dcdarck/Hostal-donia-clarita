@@ -1,0 +1,1 @@
+La aplicación web, como fue explicado en la presentación esta funcionando en la carpeta local hasta el momento, esta se encuentra en la carpeta "web-Django", antes de trabajar con esta misma, debe instalarse dos librerias de python, las cuales son pillow y pymysql.

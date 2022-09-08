@@ -72,7 +72,7 @@ def crearCli(request):
     if formulario.is_valid():
         formulario.save()
         return redirect('clientes')
-    return render(request, 'clientes/crear_cli.html', {'formulario': formulario})
+    return render(request, 'clientes/crear_cl.html', {'formulario': formulario})
 
 def editarCli(request):
     clientes = Cliente.objects.get(id_cliente=id)
@@ -80,7 +80,7 @@ def editarCli(request):
     if formulario.is_valid():
         formulario.save()
         return redirect('clientes')
-    return render(request, 'clientes/crear_cli.html', {'formulario': formulario})
+    return render(request, 'clientes/crear_cl.html', {'formulario': formulario})
 
 def eliminarCli(request):
     clientes = Cliente.objects.get(id_cliente=id)

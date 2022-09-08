@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        Lista Clientes
+        <a name="" id="" class="btn btn-success" href="{% url 'crearCli' %}" role="button">Agregar nuevo cliente</a>
     </div>
     <div class="card-body">
         <h4 class="card-title">Clientes</h4>
@@ -24,22 +24,23 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>                   
-                    {% for Cliente in Clientes %}
-                    <tr>
-                        <td>{{ Cliente.id_cli }}</td>
-                        <td>{{ Cliente.rut_cli }}</td>
-                        <td>{{ Cliente.nombre_cli }}</td>
-                        <td>{{ Cliente.razon_social }}</td>
-                        <td>{{ Cliente.email_cli }}</td>
-                        <td>{{ Cliente.telefono_cli }}</td>
-                        <td>{{ Cliente.direccion_cli }}</td>
-                        <td> 
-                            <a name="" id="" class="btn btn-info" href="{% url 'editarCli' %}" role="button">Editar</a>
-                            |
-                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminarCli' Cliente.id_cli %}" role="button">Eliminar</a>
-                        </td>
-                    </tr>
+                <tbody>
+
+                        {% for Cliente in clientes %}
+                        <tr>
+                            <td>{{ Cliente.id_cli }}</td>
+                            <td>{{ Cliente.rut_cli }}</td>
+                            <td>{{ Cliente.nombre_cli }}</td>
+                            <td>{{ Cliente.razon_social }}</td>
+                            <td>{{ Cliente.email_cli }}</td>
+                            <td>{{ Cliente.telefono_cli }}</td>
+                            <td>{{ Cliente.direccion_cli }}</td>
+                            <td> 
+                                <a name="" id="" class="btn btn-info" href="{% url 'editarCli' %}" role="button">Editar</a>
+                                |
+                                <a name="" id="" class="btn btn-danger" href="{% url 'eliminarCli' Cliente.id_cli %}" role="button">Eliminar</a>
+                            </td>
+                        </tr>
                     {% endfor %}
                     </tbody>
             </table>
