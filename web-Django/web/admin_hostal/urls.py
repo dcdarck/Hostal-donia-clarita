@@ -13,6 +13,10 @@ urlpatterns = [
     path('proveedores/editarProv/<int:id_proveedor>', views.editarProv, name='editarProv'),
 
     path('empleados', views.empleados, name='empleados'),
+    path('empleados/crearEmp', views.crearEmp, name='crearEmp'),
+    path('empleados/editarEmp', views.editarEmp, name='editarEmp'),
+    path('eliminarEmp/<int:id>', views.eliminarEmp, name='eliminarEmp'),
+    path('empleados/editarEmp/<int:id_emp>', views.editarEmp, name='editarEmp'),
     
     path('huespedes', views.huespedes, name='huespedes'),
     path('huespedes/crearHues', views.crearHues, name='crearHues'),
@@ -20,5 +24,9 @@ urlpatterns = [
     path('eliminarHues/<int:id>', views.eliminarHues, name='eliminarHues'),
     path('huespedes/editarHues/<int:id_hue>', views.editarHues, name='editarHue'),
 
-    path('clientes', views.clientes, name='clientes')
+    path('clientes', views.clientes, name='clientes'),
+    path('clientes/crearCli', views.crearCli, name='crearCli'),
+    path('clientes/editarCli', views.editarCli, name='editarCli'),
+    path('eliminarCli/<int:id>', views.eliminarCli, name='eliminarCli'),
+    path('clientes/editarCli/<int:id_cli>', views.editarCli, name='editarCli'),
 ]

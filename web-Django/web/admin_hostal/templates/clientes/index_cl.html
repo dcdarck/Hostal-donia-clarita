@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        Lista Clientes
+        <a name="" id="" class="btn btn-success" href="{% url 'crearCli' %}" role="button">Agregar nuevo cliente</a>
     </div>
     <div class="card-body">
         <h4 class="card-title">Clientes</h4>
@@ -25,17 +25,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>22.222.22-2</td>
-                        <td>Empresa prueba</td>
-                        <td>Empresarios Limitada</td>
-                        <td>empresanueva@mail.com</td>
-                        <td>Apoquindo #123</td>
-                        <td>98454578</td>
-                        <td>Editar | Borrar</td>
-                    </tr>
-                </tbody>
+
+                        {% for Cliente in clientes %}
+                        <tr>
+                            <td>{{ Cliente.id_cli }}</td>
+                            <td>{{ Cliente.rut_cli }}</td>
+                            <td>{{ Cliente.nombre_cli }}</td>
+                            <td>{{ Cliente.razon_social }}</td>
+                            <td>{{ Cliente.email_cli }}</td>
+                            <td>{{ Cliente.telefono_cli }}</td>
+                            <td>{{ Cliente.direccion_cli }}</td>
+                            <td> 
+                                <a name="" id="" class="btn btn-info" href="{% url 'editarCli' %}" role="button">Editar</a>
+                                |
+                                <a name="" id="" class="btn btn-danger" href="{% url 'eliminarCli' Cliente.id_cli %}" role="button">Eliminar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
             </table>
         
     </div>
