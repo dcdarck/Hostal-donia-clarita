@@ -1,5 +1,5 @@
 # Hostal Doña Clarita
-Bienvenidos al repositorio principal de la solución para portafolico hostal doña clarita
+Bienvenidos al repositorio principal de la solución para portafolio hostal doña clarita
 ## Tabla de contenidos
 
 
