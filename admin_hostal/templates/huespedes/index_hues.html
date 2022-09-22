@@ -1,0 +1,58 @@
+<!--Código creado por Agustín llaña, Matías Quidel, Jesús Reyes-->
+{% extends "base.html" %}
+
+{% block titulo %} Lista de huéspedes {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'crearHues' %}" role="button">Agregar nuevo huesped</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Huéspedes</h4>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Rut</th>
+                    <th>Nombre</th>
+                    <th>Primer Apellido</th>
+                    <th>Segundo Apellido</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Número Habitación</th>
+                    <th>Cliente</th>                    
+
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for Huesped in Huespedes %}
+                <tr>
+                    <td>{{ Huesped.id_huesped }}</td>
+                    <td>{{ Huesped.rut_huesped }}</td>
+                    <td>{{ Huesped.nombre }}</td>
+                    <td>{{ Huesped.p_apellido }}</td>
+                    <td>{{ Huesped.s_apellido }}</td>
+                    <td>{{ Huesped.email }}</td>
+                    <td>{{ Huesped.telefono }}</td>
+                    <td>{{ Huesped.num_habitacion_h}}</td>
+                    <td>{{ Huesped.id_cliente_h }}</td>
+                    <td>
+                        <a name="" id="" class="btn btn-info" href="{% url 'editarHues' Huesped.id_huesped %}" role="button">Editar</a>
+                        |
+                        <a name="" id="" class="btn btn-danger" href="{% url 'eliminarHues' Huesped.id_huesped %}" role="button">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}

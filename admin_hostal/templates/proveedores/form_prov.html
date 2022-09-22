@@ -1,0 +1,30 @@
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+
+      <!--CICLO PARA LISTAR INPUTS-->
+
+  {% for campo in formulario %}
+    <div class="mb-3">
+      <label for="" class="form-label">{{ campo.label }}:</label>
+
+      <input 
+      type="{{ campo.field.widget.input_type }}"
+        class="form-control"
+        name="{{ campo.name }}"
+        id=""
+        aria-describedby="helpId"
+        placeholder= "{{ campo.label }}" 
+        value="{{ campo.value | default:'' }}"
+        />
+
+      
+    </div>
+    <!--MENSAJE DE ERROR DEBAJO DEL INPUT-->
+    <div class="col-12 help-text"> {{ campo.errors }} </div>
+  {% endfor %}
+
+   <input name="" id="" class="btn btn-success" type="submit" value="Enviar información">
+   <a name="" id="" class="btn btn-danger" href="{% url 'proveedores' %}" role="button">Cancelar</a>
+
+</form>
+

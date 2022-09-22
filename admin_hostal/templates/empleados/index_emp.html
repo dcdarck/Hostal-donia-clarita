@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Empleados {% endblock %}
+
+{% block contenido %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'crearEmp' %}" role="button">Agregar nuevo empleado</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Empleados</h4>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Rut</th>
+                        <th>Nombre</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido </th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for Empleado in Empleados %}
+                    <tr>
+                        <td>{{ Empleado.id_empleado }}</td>
+                        <td>{{ Empleado.rut_empleado }}</td>
+                        <td>{{ Empleado.nombre_empleado }}</td>
+                        <td>{{ Empleado.p_apellido }}</td>
+                        <td>{{ Empleado.s_apellido }}</td>
+                        <td>{{ Empleado.email }}</td>
+                        <td>{{ Empleado.fono }}</td>
+                        <td> 
+                            <a name="" id="" class="btn btn-info" href="{% url 'editarEmp' Empleado.id_empleado %}" role="button">Editar</a>
+                            |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminarEmp' Empleado.id_empleado %}" role="button">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}
