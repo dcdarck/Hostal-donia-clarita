@@ -27,8 +27,11 @@ def crearProv(request):
     formulario = ProveedorForm(request.POST or None, request.FILES or None)
     if formulario.is_valid():
         formulario.save()
+        #messages.success(request, 'El Proveedor fue creado correctamente.')
         return redirect('proveedores')
-    return render(request, 'proveedores/crear_prov.html', {'formulario': formulario})
+    else:
+        #messages.error(request, "El proveedor no se creó")       
+        return render(request, 'proveedores/crear_prov.html', {'formulario': formulario})
 
 def editarProv(request, id):
     proveedor = Proveedor.objects.get(id_proveedor=id)

@@ -2,13 +2,15 @@
 
 from django import forms
 from .models import Cliente, Empleado, Huesped, Proveedor
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
+from django.utils.translation import gettext_lazy as _
 
 class ProveedorForm(forms.ModelForm): 
     class Meta:
         model = Proveedor
         fields ='__all__'
-        
+ 
+
 
 class EmpleadoForm(forms.ModelForm):
     class Meta:

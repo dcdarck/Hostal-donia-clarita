@@ -1,8 +1,8 @@
-<form enctype="multipart/form-data" method="post">
+<form id="provForm" enctype="multipart/form-data" method="post">
   {% csrf_token %}
+  {% load static %}
 
       <!--CICLO PARA LISTAR INPUTS-->
-
   {% for campo in formulario %}
     <div class="mb-3">
       <label for="" class="form-label">{{ campo.label }}:</label>
@@ -11,7 +11,7 @@
       type="{{ campo.field.widget.input_type }}"
         class="form-control"
         name="{{ campo.name }}"
-        id=""
+        id="txt"
         aria-describedby="helpId"
         placeholder= "{{ campo.label }}" 
         value="{{ campo.value | default:'' }}"
@@ -23,6 +23,7 @@
     <div class="col-12 help-text"> {{ campo.errors }} </div>
   {% endfor %}
 
+  <script src="{% static 'js/validador.js' %}" > </script>
    <input name="" id="" class="btn btn-success" type="submit" value="Enviar información">
    <a name="" id="" class="btn btn-danger" href="{% url 'proveedores' %}" role="button">Cancelar</a>
 

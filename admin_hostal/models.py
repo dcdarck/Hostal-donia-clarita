@@ -5,7 +5,9 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+import datetime
 from wsgiref import validate
+from xml.dom import ValidationErr
 from django.db import models
 from .validators import validation, validate_even
 from admin_hostal import validators
@@ -251,15 +253,18 @@ class Producto(models.Model):
 
 class Proveedor(models.Model):
     id_proveedor = models.AutoField(primary_key=True)
-    nombre_prov = models.CharField(max_length=50, validators=[validation])
+    nombre_prov = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)    
-    telefono = models.IntegerField(validators=[validate_even])
+    telefono = models.IntegerField()
     direccion = models.CharField(max_length=80)
     rubro = models.CharField(max_length=25, blank=True, null=True)
+    
+    
 
     class Meta:
         managed = False
         db_table = 'PROVEEDOR'
+
               
 
 
