@@ -9,8 +9,8 @@ import datetime
 from wsgiref import validate
 from xml.dom import ValidationErr
 from django.db import models
-from .validators import validation, validate_even
-from admin_hostal import validators
+#from .validators import validation, validate_even
+
 
 class Accesorio(models.Model):
     id_accesorio = models.IntegerField(primary_key=True)
@@ -258,7 +258,6 @@ class Proveedor(models.Model):
     telefono = models.IntegerField()
     direccion = models.CharField(max_length=80)
     rubro = models.CharField(max_length=25, blank=True, null=True)
-    
     
 
     class Meta:
