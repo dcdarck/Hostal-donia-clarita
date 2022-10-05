@@ -18,7 +18,7 @@ class listarClientes(SinPrivilegios, generic.ListView):
 
 class editarCliente(SuccessMessageMixin, SinPrivilegios, generic.UpdateView):
     model = Cliente
-    template_name = "cliente/formCliente.html"
+    template_name = "formCliente.html"
     context_object_name = "cliente"
     form_class = ClienteForm
     success_url = reverse_lazy("cliente:listaClientes")
@@ -33,7 +33,7 @@ class editarCliente(SuccessMessageMixin, SinPrivilegios, generic.UpdateView):
 
 class eliminarCliente(SuccessMessageMixin, SinPrivilegios, generic.DeleteView):
     model = Cliente
-    template_name = 'cliente/eliminarCliente.html'
+    template_name = 'eliminarCliente.html'
     context_object_name = 'obj'
     success_url = reverse_lazy("cliente:listaClientes")
     success_message = "El Cliente ha sido eliminado correctamente"
@@ -41,7 +41,7 @@ class eliminarCliente(SuccessMessageMixin, SinPrivilegios, generic.DeleteView):
     
 class nuevoCliente(SuccessMessageMixin, SinPrivilegios, generic.CreateView):
     model = Cliente
-    template_name = "cliente/formCliente.html"
+    template_name = "formCliente.html"
     context_object_name = "cliente"
     form_class = ClienteForm
     success_url = reverse_lazy("cliente:listaClientes")
