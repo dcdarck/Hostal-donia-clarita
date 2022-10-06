@@ -11,7 +11,7 @@
       <div class="card-body">
         <div class="row no-gutters align-items-center">
           <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">{% if Cliente %} Editar {% else %} Nuevo {% endif %} Cliente</div>
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">{% if cliente %} Editar {% else %} Nuevo {% endif %} Cliente</div>
             <div class="dropdown-divider"></div>
             <div class="row">
               <div class="col-9">
@@ -25,7 +25,43 @@
                   <input type="checkbox" name="estado" class="form-control" id="estado" {% if Cliente.estado %} checked {% endif %}>
                 </div>
               </div>
+              <div class="col-9">
+                <div class="input-group">
+                  <input type="text" name="nombre_empresa" maxlength="100" id="nombre_empresa" class="form-control" placeholder="Nombre Empresa" value="{% if Cliente %} {{ Cliente.nombre_empresa }} {% endif %}" required>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="input-group">
+                  <input type="text" name="razon_social" maxlength="100" id="razon_social" class="form-control" placeholder="Razón Social" value="{% if Cliente %} {{ Cliente.razon_social }} {% endif %}" required>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="input-group">
+                  <input type="text" name="email" maxlength="100" id="email" class="form-control" placeholder="Email" value="{% if Cliente %} {{ Cliente.email }} {% endif %}" required>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="input-group">
+                  <input type="text" name="telefono" maxlength="100" id="telefono" class="form-control" placeholder="Telefono" value="{% if Cliente %} {{ Cliente.telefono }} {% endif %}" required>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="input-group">
+                  <input type="text" name="direccion" maxlength="100" id="direccion" class="form-control" placeholder="Dirección" value="{% if Cliente %} {{ Cliente.direccion }} {% endif %}" required>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="input-group">
+                  <input type="text" name="usuarioModifica" maxlength="100" id="usuarioModifica" class="form-control" placeholder="Usuario que modifica" value="{% if Cliente %} {{ Cliente.usuarioModifica }} {% endif %}" required>
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="input-group">
+                  <input type="text" name="usuarioCrea_id" maxlength="100" id="usuarioCrea_id" class="form-control" placeholder="Usuario crea id" value="{% if Cliente %} {{ Cliente.usuarioCrea_id }} {% endif %}" required>
+                </div>
+              </div>
             </div>
+            
             <div class="dropdown-divider"></div>
             <div class="row">
               <div class="col">

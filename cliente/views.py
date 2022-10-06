@@ -25,10 +25,6 @@ class editarCliente(SuccessMessageMixin, SinPrivilegios, generic.UpdateView):
     success_message = "La categoría ha sido actualizada correctamente"
     permission_required = "cliente.change_cliente"
 
-    def form_valid(self, form):
-        form.instance.usuarioModifica = self.request.user.id
-
-        return super().form_valid(form)
 
 
 class eliminarCliente(SuccessMessageMixin, SinPrivilegios, generic.DeleteView):
@@ -36,7 +32,7 @@ class eliminarCliente(SuccessMessageMixin, SinPrivilegios, generic.DeleteView):
     template_name = 'eliminarCliente.html'
     context_object_name = 'obj'
     success_url = reverse_lazy("cliente:listaClientes")
-    success_message = "El Cliente ha sido eliminado correctamente"
+    success_message = "El cliente ha sido eliminado correctamente"
     permission_required = "cliente.delete_cliente"
     
 class nuevoCliente(SuccessMessageMixin, SinPrivilegios, generic.CreateView):
@@ -48,7 +44,7 @@ class nuevoCliente(SuccessMessageMixin, SinPrivilegios, generic.CreateView):
     success_message = "El cliente se ha creado correctamente"
     permission_required = "cliente.add_cliente"
 
-    def form_valid(self, form):
-        form.instance.usuarioCrea = self.request.user
-
-        return super().form_valid(form)
+    #def form_valid(self, form):
+    #    form.instance.usuarioCrea = self.request.user
+#
+    #    return super().form_valid(form)
