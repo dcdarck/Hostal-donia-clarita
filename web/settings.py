@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bases',
     'cliente',
-    'django_userforeignkey',
+    'empleado',
+    'django_userforeignkey'
 
 ]
 

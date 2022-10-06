@@ -1,16 +1,15 @@
-{% extends "base/base.html" %}
+{% extends "base.html" %}
 
-{% block titulo %} Agregar nuevo cliente {% endblock %}
+{% block titulo %} Editar clientes {% endblock %}
 
-{% block contenido %}
-
+{% block Content %}
 <div class="card">
     <div class="card-header">
-        Agregar un cliente
+        Editar un cliente
     </div>
     <div class="card-body">
         <h4 class="card-title">Datos del cliente</h4>
-        {% include 'cliente/form_cl.html' %}
+        {% include 'clientes/form_cl.html' %}
     </div>
     <div class="card-footer text-muted">
         Footer

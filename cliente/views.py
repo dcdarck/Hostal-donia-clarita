@@ -8,43 +8,43 @@ from bases.views import SinPrivilegios
 from .models import Cliente
 from .forms import ClienteForm
 
-
-class listarClientes(SinPrivilegios, generic.ListView):
-    permission_required = "cliente.view_cliente"
-    model = Cliente
-    template_name = "listaClientes.html"
-    context_object_name = "clientes"
-
-
-class editarCliente(SuccessMessageMixin, SinPrivilegios, generic.UpdateView):
-    model = Cliente
-    template_name = "formCliente.html"
-    context_object_name = "cliente"
-    form_class = ClienteForm
-    success_url = reverse_lazy("cliente:listaClientes")
-    success_message = "La categoría ha sido actualizada correctamente"
-    permission_required = "cliente.change_cliente"
-
-
-
-class eliminarCliente(SuccessMessageMixin, SinPrivilegios, generic.DeleteView):
-    model = Cliente
-    template_name = 'eliminarCliente.html'
-    context_object_name = 'obj'
-    success_url = reverse_lazy("cliente:listaClientes")
-    success_message = "El cliente ha sido eliminado correctamente"
-    permission_required = "cliente.delete_cliente"
     
-class nuevoCliente(SuccessMessageMixin, SinPrivilegios, generic.CreateView):
-    model = Cliente
-    template_name = "formCliente.html"
-    context_object_name = "cliente"
-    form_class = ClienteForm
-    success_url = reverse_lazy("cliente:listaClientes")
-    success_message = "El cliente se ha creado correctamente"
-    permission_required = "cliente.add_cliente"
+def crearCli(request):
+    formulario = ClienteForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        messages.success(request, 'El Cliente fue creado correctamente.')
+        return redirect('cliente:clientes')
+    return render(request, 'crear_cl.html', {'formulario': formulario})
 
-    #def form_valid(self, form):
-    #    form.instance.usuarioCrea = self.request.user
-#
-    #    return super().form_valid(form)
+def clientes(request):
+    Clientes = Cliente.objects.all()
+    print(Clientes)
+    return render(request, 'index_cl.html', {'Clientes' : Clientes})
+
+
+def crearCli(request):
+    formulario = ClienteForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        messages.success(request, 'El Cliente fue creado correctamente.')
+        return redirect('cliente:clientes')
+    return render(request, 'crear_cl.html', {'formulario': formulario})
+
+def editarCli(request, id):
+    clientes = Cliente.objects.get(id_cliente=id)
+    formulario = ClienteForm(request.POST or None, request.FILES or None, instance=clientes)
+    if formulario.is_valid():
+        formulario.save()
+        messages.success(request, 'El Cliente fue modificado correctamente.')    
+        return redirect('cliente:clientes')
+    return render(request, 'crear_cl.html', {'formulario': formulario})
+
+def eliminarCli(request, id):
+    clientes = Cliente.objects.get(id_cliente=id)
+    if clientes.delete():
+        messages.warning(request, 'El Cliente fue Eliminado correctamente.')
+        return redirect('cliente:clientes')
+    else:
+        messages.error(request, 'Algo salió mal.')
+        return redirect('cliente:clientes')

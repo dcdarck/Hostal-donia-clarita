@@ -11,14 +11,6 @@ class Cliente(ClaseModelo):
     telefono = models.CharField(max_length=45)
     direccion = models.CharField(max_length=200)
 
-    def __str__(self):
-        return '{}'.format(self.nombre_empresa)
-
-    def guardar(self):
-        self.nombre_empresa = self.nombre_empresa.upper()
-
-        super(Cliente, self).guardar()
-
     class Meta:
         verbose_name_plural = "Clientes"
         db_table = 'CLIENTE'

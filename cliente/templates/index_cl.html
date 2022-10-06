@@ -1,12 +1,11 @@
-{% extends "base.html" %}
+{% extends "base/base.html" %}
 
 {% block titulo %} Lista de Clientes {% endblock %}
 
-{% block contenido %}
-
+{% block Content %}
 <div class="card">
     <div class="card-header">
-        <a name="" id="" class="btn btn-success" href="{% url 'crearCli' %}" role="button">Agregar nuevo cliente</a>
+        <a name="" id="" class="btn btn-success" href="{% url 'cliente:crearCli' %}" role="button">Agregar nuevo cliente</a>
     </div>
     <div class="card-body">
         <h4 class="card-title">Clientes</h4>
@@ -28,7 +27,7 @@
 
                         {% for Cliente in Clientes %}
                         <tr>
-                            <td>{{ Cliente.id_cliente}}</td>
+                            <td>{{ Cliente.id_cliente }}</td>
                             <td>{{ Cliente.rut_empresa }}</td>
                             <td>{{ Cliente.nombre_empresa }}</td>
                             <td>{{ Cliente.razon_social }}</td>
@@ -36,21 +35,12 @@
                             <td>{{ Cliente.telefono }}</td>
                             <td>{{ Cliente.direccion }}</td>
                             <td> 
-                                <a name="" id="" class="btn btn-info" href="{% url 'editarCli' Cliente.id_cliente %}" role="button">Editar</a>
+                                <a name="" id="" class="btn btn-info" href="{% url 'cliente:editarCli' Cliente.id_cliente %}" role="button">Editar</a>
                                 |
-                                <a name="" id="" class="btn btn-danger" href="{% url 'eliminarCli' Cliente.id_cliente %}" role="button">Eliminar</a>
+                                <a name="" id="" class="btn btn-danger" href="{% url 'cliente:eliminarCli' Cliente.id_cliente %}" role="button">Eliminar</a>
                             </td>
                         </tr>
-                        {% endfor %}
-
-                        {% if messages %}
-                            {% for message in messages %}
-                             <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                             </div>              
-                            {% endfor %}
-                        {% endif %}
+                    {% endfor %}
                     </tbody>
             </table>
         
