@@ -1,13 +1,12 @@
 from django.shortcuts import redirect, render
 from empleado.forms import EmpleadoEdit, EmpleadoForm
 from django.contrib import messages
-
 from empleado.models import Empleado
 
 def empleados(request):
     Empleados = Empleado.objects.all()
     print(Empleados)
-    return render(request, 'empleados/index_emp.html', {'Empleados' : Empleados})
+    return render(request, 'index_emp.html', {'Empleados' : Empleados})
 
 def crearEmp(request):
     formulario = EmpleadoForm(request.POST or None, request.FILES or None)
@@ -16,7 +15,7 @@ def crearEmp(request):
         messages.success(request, 'El Empleado fue creado correctamente.')
         return redirect('empleados')
             
-    return render(request, 'empleados/crear_emp.html', {'formulario': formulario})
+    return render(request, 'crear_emp.html', {'formulario': formulario})
 
 def editarEmp(request, id):
     empleados = Empleado.objects.get(id_empleado=id)
@@ -25,7 +24,7 @@ def editarEmp(request, id):
         formulario.save()
         messages.success(request, 'El Empleado fue modificado correctamente.')
         return redirect('empleados')
-    return render(request, 'empleados/editar_emp.html', {'formulario': formulario})
+    return render(request, 'editar_emp.html', {'formulario': formulario})
 
 def eliminarEmp(request, id):
     empleados = Empleado.objects.get(id_empleado=id)
