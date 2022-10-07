@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'bases',
     'cliente',
     'empleado',
-    'django_userforeignkey'
+    'proveedor',
+    'huesped',
+    'django_userforeignkey',
+    'widget_tweaks'
 
 ]
 

@@ -56,6 +56,12 @@
             {% if perms.empleado.view_empleado %}
             <a class="collapse-item" href="{% url 'empleado:empleados' %}">Empleados</a>
             {% endif %}
+            {% if perms.proveedor.view_proveedor %}
+            <a class="collapse-item" href="{% url 'proveedor:proveedores' %}">Proveedores</a>
+            {% endif %}
+            {% if perms.huesped.view_huesped %}
+            <a class="collapse-item" href="{% url 'huesped:huespedes' %}">Huespedes</a>
+            {% endif %}
           </div>
         </div>
       </li>

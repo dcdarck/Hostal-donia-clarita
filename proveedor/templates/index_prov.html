@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+
+{% block titulo %} Lista de Proveedores {% endblock %}
+
+{% block Content %}
+
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'proveedor:crearProv' %}" role="button">Agregar nuevo proveedor</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Proveedores</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Direccion</th>
+                    <th>Rubro</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for Proveedor in Proveedores %}
+                <tr>
+                    <td>{{ Proveedor.id_proveedor }}</td>
+                    <td>{{ Proveedor.nombre_prov }}</td>
+                    <td>{{ Proveedor.email }}</td>
+                    <td>{{ Proveedor.telefono }}</td>
+                    <td>{{ Proveedor.direccion }}</td>
+                    <td>{{ Proveedor.rubro }}</td>
+                    <td> 
+                        <a name="" id="" class="btn btn-info" href="{% url 'proveedor:editarProv' Proveedor.id_proveedor%}" role="button">Editar</a>
+                        |
+                        <a name="" id="" class="btn btn-danger" href="{% url 'proveedor:eliminarProv' Proveedor.id_proveedor %}" role="button">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+                {% if messages %}
+                    {% for message in messages %}
+                     <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     </div>              
+                    {% endfor %}
+                {% endif %}
+
+            </tbody>
+        </table>
+
+    </div>
+    <div class="card-footer text-muted">
+        
+        
+    </div>
+</div>
+{% endblock %}

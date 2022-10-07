@@ -13,7 +13,7 @@ def crearEmp(request):
     if formulario.is_valid():
         formulario.save()
         messages.success(request, 'El Empleado fue creado correctamente.')
-        return redirect('empleados')
+        return redirect('empleado:empleados')
             
     return render(request, 'crear_emp.html', {'formulario': formulario})
 
@@ -23,14 +23,14 @@ def editarEmp(request, id):
     if formulario.is_valid() and request.POST:
         formulario.save()
         messages.success(request, 'El Empleado fue modificado correctamente.')
-        return redirect('empleados')
+        return redirect('empleado:empleados')
     return render(request, 'editar_emp.html', {'formulario': formulario})
 
 def eliminarEmp(request, id):
     empleados = Empleado.objects.get(id_empleado=id)
     if empleados.delete():
         messages.warning(request, 'El Empleado fue Eliminado correctamente.')
-        return redirect('empleados')
+        return redirect('empleado:empleados')
     else:
         messages.error(request, 'Algo salió mal.')
         return redirect('empleados')
