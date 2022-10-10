@@ -7,8 +7,8 @@ class Empleado(models.Model):
     nombre_empleado = models.CharField(max_length=45)
     p_apellido = models.CharField(max_length=45)
     s_apellido = models.CharField(max_length=45, blank=True, null=True)
-    email = models.CharField(max_length=45)
-    fono = models.CharField(max_length=45)
+    email = models.EmailField(max_length=45)
+    fono = models.IntegerField()
 
     class Meta:
         verbose_name_plural = "Empleado"

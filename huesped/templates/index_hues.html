@@ -23,7 +23,7 @@
                     <th>Email</th>
                     <th>Telefono</th>
                     <th>Número Habitación</th>
-                    <th>Cliente</th>                    
+                    <th>ID Cliente</th>                    
 
                 </tr>
             </thead>
@@ -38,6 +38,11 @@
                     <td>{{ Huesped.s_apellido }}</td>
                     <td>{{ Huesped.email }}</td>
                     <td>{{ Huesped.telefono }}</td>
+                    <td>{{ Huesped.num_habitacion_h }}</td>
+                    <td>{{ Huesped.id_cliente_h }}</td>
+
+
+
                     <td>
                         <a name="" id="" class="btn btn-info" href="{% url 'huesped:editarHues' Huesped.id_huesped %}" role="button">Editar</a>
                         |

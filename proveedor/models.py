@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.db import models
 from bases.models import ClaseModelo2
 
@@ -11,6 +10,6 @@ class Proveedor(models.Model):
     rubro = models.CharField(max_length=25, blank=True, null=True)
     
     class Meta:
-        managed = False
+        verbose_name_plural = 'Proveedores'
         db_table = 'PROVEEDOR'  
         

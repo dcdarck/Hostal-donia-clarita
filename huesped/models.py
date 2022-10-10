@@ -8,9 +8,9 @@ class Huesped(models.Model):
     nombre = models.CharField(max_length=100)
     p_apellido = models.CharField(max_length=100)
     s_apellido = models.CharField(max_length=100, blank=True, null=True)
-    email = models.CharField(max_length=100)
-    telefono = models.CharField(max_length=45)
+    email = models.EmailField(max_length=100)
+    telefono = models.IntegerField()
 
     class Meta:
-        managed = False
+        verbose_name_plural = 'Empleados'
         db_table = 'HUESPED'
