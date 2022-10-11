@@ -1,5 +1,5 @@
+from pyexpat import model
 from django.db import models
-from bases.models import ClaseModelo
 # Create your models here.
 
 class Cliente(models.Model):
@@ -9,8 +9,7 @@ class Cliente(models.Model):
     razon_social = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     telefono = models.IntegerField()
-    direccion = models.CharField(max_length=200)
-    
+    direccion = models.CharField(max_length=200)    
 
     class Meta:
         verbose_name_plural = "Clientes"

@@ -1,5 +1,4 @@
 from django.db import models
-from bases.models import ClaseModelo
 # Create your models here.
 
 class Huesped(models.Model):
@@ -12,5 +11,5 @@ class Huesped(models.Model):
     telefono = models.IntegerField()
 
     class Meta:
-        verbose_name_plural = 'Empleados'
+        verbose_name_plural = 'Huespedes'
         db_table = 'HUESPED'

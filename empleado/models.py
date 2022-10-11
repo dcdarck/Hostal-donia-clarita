@@ -1,5 +1,4 @@
 from django.db import models
-from bases.models import ClaseModelo2
 
 class Empleado(models.Model):
     id_empleado = models.AutoField(primary_key=True)

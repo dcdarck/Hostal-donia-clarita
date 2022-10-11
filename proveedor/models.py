@@ -1,5 +1,4 @@
 from django.db import models
-from bases.models import ClaseModelo2
 
 class Proveedor(models.Model):
     id_proveedor = models.AutoField(primary_key=True)

@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'admin_hostal',
     'bases',
     'cliente',
     'empleado',
@@ -88,7 +87,7 @@ WSGI_APPLICATION = 'web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dona_clarita',
+        'NAME': 'dona_clarita1',
         'USER': 'hostal@%',
         'PASSWORD':'gato',
         'HOST':'52.0.232.251',
