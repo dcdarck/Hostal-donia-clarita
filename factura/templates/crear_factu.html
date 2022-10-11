@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+
+{% block titulo %} Agregar nueva Factura {% endblock %}
+
+{% block Content %}
+
+<div class="card">
+    <div class="card-header">
+        Agregar una Factura
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos de Factura</h4>
+        {% include 'form_factu.html' %}
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
+
+
+{% endblock %}

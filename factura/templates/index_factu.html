@@ -1,0 +1,64 @@
+<!--Código creado por Agustín llaña, Matías Quidel, Jesús Reyes-->
+{% extends "base/base.html" %}
+
+{% block titulo %} Lista de Facturas {% endblock %}
+
+{% block Content %}
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'factura:crearFact' %}" role="button">Agregar nueva Factura</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Facturas</h4>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Nombre Empresa</th>
+                    <th>Subtotal</th>
+                    <th>IVA</th>
+                    <th>total</th>
+              
+
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for Factura in Facturas %}
+                <tr>
+                    <td>{{ Factura.id_Factura }}</td>
+                    <td>{{ Factura.fecha }}</td>
+                    <td>{{ Factura.nombre_empresa }}</td>
+                    <td>{{ Factura.subtotal }}</td>
+                    <td>{{ Factura.iva }}</td>
+                    <td>{{ Factura.total }}</td>
+
+
+
+
+                    <td>
+                        <a name="" id="" class="btn btn-danger" href="{% url 'factura:eliminarFact' Factura.id_Factura %}" role="button">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                {% if messages %}
+                    {% for message in messages %}
+                     <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     </div>              
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+{% endblock %}

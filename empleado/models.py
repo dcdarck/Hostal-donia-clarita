@@ -10,5 +10,5 @@ class Empleado(models.Model):
     fono = models.IntegerField()
 
     class Meta:
-        verbose_name_plural = "Empleado"
+        verbose_name_plural = "Empleados"
         db_table = 'EMPLEADO'
