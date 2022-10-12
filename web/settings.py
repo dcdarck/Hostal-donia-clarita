@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'admin_hostal',
     'bases',
-    'cliente',
-    'empleado',
-    'proveedor',
-    'huesped',
+    #'cliente',
+    #'empleado',
+    #'proveedor',
+    #'huesped',
+    #'factura',
     'django_userforeignkey'
 ]
 

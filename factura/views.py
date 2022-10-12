@@ -1,9 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from factura.forms import FacturaForm
-from .models import Factura
+from factura.models import Factura
 
-# Create your views here.
+
 def facturas(request):
     Facturas = Factura.objects.all()
     print(Facturas)
@@ -22,7 +22,7 @@ def eliminarFact(request, id):
     facturas = Factura.objects.get(id_factura=id)
     if facturas.delete():
         messages.warning(request, 'La Factura fue Eliminada correctamente.')
-        return redirect('factura:facturas')
+        return redirect('factura:Facturas')
     else:
         messages.error(request, 'Algo salió mal.')
         return redirect('facturas')

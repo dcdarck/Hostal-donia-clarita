@@ -1,7 +1,8 @@
 from django import forms
-from .models import Factura
 
-class FacturaForm(forms.ModelForm):
+from factura.models import Factura
+
+class FacturaForm(forms.ModelForm): 
     class Meta:
         model = Factura
         fields ='__all__'

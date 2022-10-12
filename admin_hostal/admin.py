@@ -1,3 +1,18 @@
 from django.contrib import admin
-from .models import Proveedor, Empleado, Huesped
+from .models import Cliente, Factura, Habitacion, OrdenCompra, OrdenPedido, Plato, Producto, Proveedor, Empleado, Huesped, Usuario
 # Register your models here.
+
+admin.site.register(Cliente)
+admin.site.register(Proveedor)
+admin.site.register(Empleado)
+admin.site.register(Huesped)
+admin.site.register(Producto)
+admin.site.register(Plato)
+admin.site.register(Habitacion)
+admin.site.register(Factura)
+admin.site.register(OrdenPedido)
+admin.site.register(OrdenCompra)
+admin.site.register(Usuario)
+
+
+
