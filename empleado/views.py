@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from empleado.forms import EmpleadoEdit, EmpleadoForm
 from django.contrib import messages
-from empleado.models import Empleado
+from admin_hostal.models import Empleado
 
 def empleados(request):
     Empleados = Empleado.objects.all()

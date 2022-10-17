@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ValidationError
-from .models import Empleado
+from admin_hostal.models import Empleado
 
 class EmpleadoForm(forms.ModelForm):
     rut_empleado = forms.CharField(min_length=8, max_length=13)

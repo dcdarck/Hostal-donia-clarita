@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from factura.forms import FacturaForm
-from factura.models import Factura
+from admin_hostal.models import Factura
 
 
 def facturas(request):

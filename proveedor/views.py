@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from proveedor.forms import ProveedorEdit, ProveedorEdit
 from django.contrib import messages
-from proveedor.models import Proveedor
+from admin_hostal.models import Proveedor
 from proveedor.forms import ProveedorForm
 
 def proveedores(request):

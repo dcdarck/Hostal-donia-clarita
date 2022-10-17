@@ -20,10 +20,10 @@ from django.urls import include
 
 urlpatterns = [
     path('', include(('bases.urls', 'bases'), namespace='bases')),
-    #path('cliente/', include(('cliente.urls', 'cliente'), namespace='cliente')),
-    #path('empleado/', include(('empleado.urls', 'empleado'), namespace='empleado')),
-    #path('proveedor/', include(('proveedor.urls', 'proveedor'), namespace='proveedor')),
-    #path('huesped/', include(('huesped.urls', 'huesped'), namespace='huesped')),
-    #path('factura/', include(('factura.urls', 'factura'), namespace='factura')),
+    path('cliente/', include(('cliente.urls', 'cliente'), namespace='cliente')),
+    path('empleado/', include(('empleado.urls', 'empleado'), namespace='empleado')),
+    path('proveedor/', include(('proveedor.urls', 'proveedor'), namespace='proveedor')),
+    path('huesped/', include(('huesped.urls', 'huesped'), namespace='huesped')),
+    path('factura/', include(('factura.urls', 'factura'), namespace='factura')),
     path('admin/', admin.site.urls)
 ]

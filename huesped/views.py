@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.views import generic
 from django.urls import reverse_lazy
 from bases.views import SinPrivilegios
-from .models import Huesped
+from admin_hostal.models import Huesped
 from .forms import HuespedForm
 
     

@@ -13,27 +13,30 @@ class Accesorio(models.Model):
     accesorio = models.CharField(max_length=45)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'ACCESORIO'
 
 
 class Cama(models.Model):
     id_cama = models.IntegerField(primary_key=True)
     cant_cojines = models.IntegerField()
-    id_tipo_cama_c = models.ForeignKey('TipoCama', models.DO_NOTHING, db_column='id_tipo_cama_c')
+    id_tipo_cama_c = models.ForeignKey('TipoCama', models.DO_NOTHING, db_column='id_tipo_cama_c', blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'CAMA'
-        unique_together = (('id_cama', 'id_tipo_cama_c'),)
+        
 
 
 class Cargo(models.Model):
     id_cargo = models.IntegerField(primary_key=True)
     cargo = models.CharField(max_length=100)
 
+    def __str__(self):
+        return f'{self.cargo} {self.id_cargo}' 
+
     class Meta:
-        managed = False
+        managed = True
         db_table = 'CARGO'
 
 
@@ -48,8 +51,12 @@ class Cliente(models.Model):
     id_usuario_c = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='id_usuario_c', blank=True, null=True)
     id_contrato_c = models.ForeignKey('Contrato', models.DO_NOTHING, db_column='id_contrato_c', blank=True, null=True)
 
+    def __str__(self):
+        return f'Cliente: {self.id_cliente} {self.nombre_empresa}' 
+
     class Meta:
-        managed = False
+        verbose_name_plural = "Clientes"
+        managed = True
         db_table = 'CLIENTE'
 
 
@@ -61,8 +68,12 @@ class Contrato(models.Model):
     id_estado_contrato_c = models.ForeignKey('EstadoContrato', models.DO_NOTHING, db_column='id_estado_contrato_c', blank=True, null=True)
     id_tipo_contrato_c = models.ForeignKey('TipoContrato', models.DO_NOTHING, db_column='id_tipo_contrato_c', blank=True, null=True)
 
+    def __str__(self):
+        return f'Contrato Nro: {self.id_contrato}' 
+
     class Meta:
-        managed = False
+        verbose_name_plural = 'Contratos'
+        managed = True
         db_table = 'CONTRATO'
 
 
@@ -74,7 +85,7 @@ class DetFactura(models.Model):
     id_factura_d = models.ForeignKey('Factura', models.DO_NOTHING, db_column='id_factura_d', blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'DET_FACTURA'
 
 
@@ -88,9 +99,13 @@ class Empleado(models.Model):
     fono = models.CharField(max_length=45)
     id_usuario_e = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='id_usuario_e', blank=True, null=True)
     id_cargo_e = models.ForeignKey(Cargo, models.DO_NOTHING, db_column='id_cargo_e')
+    
+    def __str__(self):
+        return f'{self.nombre_empleado} {self.id_empleado}' 
 
     class Meta:
-        managed = False
+        verbose_name_plural = 'Empleados'
+        managed = True
         db_table = 'EMPLEADO'
         unique_together = (('id_empleado', 'id_cargo_e'),)
 
@@ -98,36 +113,48 @@ class Empleado(models.Model):
 class EstadoContrato(models.Model):
     id_estado_contrato = models.IntegerField(primary_key=True)
     estado_contrato = models.CharField(max_length=45)
+    
+    def __str__(self):
+        return f'{self.estado_contrato} {self.id_estado_contrato}' 
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'ESTADO_CONTRATO'
 
 
 class EstadoHab(models.Model):
     id_estado_hab = models.IntegerField(primary_key=True)
     estado_hab = models.CharField(max_length=45)
+    
+    def __str__(self):
+        return f'{self.estado_hab} {self.id_estado_hab}' 
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'ESTADO_HAB'
 
 
 class EstadoPedido(models.Model):
     id_estado_p = models.IntegerField(primary_key=True)
     estado_pedido = models.CharField(max_length=45)
+    
+    def __str__(self):
+        return f'{self.estado_pedido} {self.id_estado_p}' 
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'ESTADO_PEDIDO'
 
 
 class EstadoUsuario(models.Model):
     id_estado_user = models.IntegerField(primary_key=True)
     estado_user = models.CharField(max_length=45)
+    
+    def __str__(self):
+        return f'Usuario: {self.estado_user} {self.id_estado_user}' 
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'ESTADO_USUARIO'
 
 
@@ -140,9 +167,13 @@ class Factura(models.Model):
     total = models.IntegerField()
     id_cliente = models.IntegerField()
     num_orden_f = models.ForeignKey('OrdenCompra', models.DO_NOTHING, db_column='num_orden_f', blank=True, null=True)
+    
+    def __str__(self):
+        return f'Factura Nro: {self.id_factura} Cliente: {self.nombre_empresa}' 
 
     class Meta:
-        managed = False
+        verbose_name_plural = 'Facturas'
+        managed = True
         db_table = 'FACTURA'
 
 
@@ -151,7 +182,7 @@ class FamiliaProd(models.Model):
     familia_p = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'FAMILIA_PROD'
 
 
@@ -161,9 +192,13 @@ class Habitacion(models.Model):
     id_estado_hab_h = models.ForeignKey(EstadoHab, models.DO_NOTHING, db_column='id_estado_hab_h', blank=True, null=True)
     id_tipo_hab_h = models.ForeignKey('TipoHab', models.DO_NOTHING, db_column='id_tipo_hab_h')
     id_tipo_cama_h = models.ForeignKey('TipoCama', models.DO_NOTHING, db_column='id_tipo_cama_h', blank=True, null=True)
+    
+    def __str__(self):
+        return f'Habitación Nro: {self.num_habitacion} ${self.precio}' 
 
     class Meta:
-        managed = False
+        verbose_name_plural = 'Habitaciones'
+        managed = True
         db_table = 'HABITACION'
         unique_together = (('num_habitacion', 'id_tipo_hab_h'),)
 
@@ -174,7 +209,7 @@ class HabAcc(models.Model):
     id_hab_ha = models.ForeignKey(Habitacion, models.DO_NOTHING, db_column='id_hab_ha', blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'HAB_ACC'
 
 
@@ -191,8 +226,12 @@ class Huesped(models.Model):
     num_habitacion_h = models.ForeignKey(Habitacion, models.DO_NOTHING, db_column='num_habitacion_h', blank=True, null=True)
     id_minuta_h = models.ForeignKey('Minuta', models.DO_NOTHING, db_column='id_minuta_h', blank=True, null=True)
 
+    def __str__(self):
+        return f'Huesped: {self.nombre} {self.p_apellido}' 
+    
     class Meta:
-        managed = False
+        verbose_name_plural = 'Huespedes'
+        managed = True
         db_table = 'HUESPED'
 
 
@@ -200,9 +239,12 @@ class Minuta(models.Model):
     id_minuta = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     precio = models.IntegerField()
+    
+    def __str__(self):
+        return f'Minuta: {self.nombre} {self.id_minuta} {self.precio}' 
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'MINUTA'
 
 
@@ -214,8 +256,12 @@ class OrdenCompra(models.Model):
     id_factura = models.IntegerField()
     id_cliente_o = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='id_cliente_o', blank=True, null=True)
 
+    def __str__(self):
+        return f'Orden de compra: {self.num_orden} {self.nombre_empresa}' 
+
     class Meta:
-        managed = False
+        verbose_name_plural = 'Ordenes De Compra'
+        managed = True
         db_table = 'ORDEN_COMPRA'
 
 
@@ -226,8 +272,12 @@ class OrdenPedido(models.Model):
     id_proveedor_o = models.ForeignKey('Proveedor', models.DO_NOTHING, db_column='id_proveedor_o', blank=True, null=True)
     id_estado_p_o = models.ForeignKey(EstadoPedido, models.DO_NOTHING, db_column='id_estado_p_o', blank=True, null=True)
 
+    def __str__(self):
+        return f'{self.id_estado_p_o} - {self.id_proveedor_o}' 
+
     class Meta:
-        managed = False
+        verbose_name_plural = 'Ordenes de Pedidos'
+        managed = True
         db_table = 'ORDEN_PEDIDO'
 
 
@@ -235,9 +285,12 @@ class Plato(models.Model):
     id_plato = models.AutoField(primary_key=True)
     nombre_plato = models.CharField(max_length=45)
     id_tipo_plato_p = models.ForeignKey('TipoPlato', models.DO_NOTHING, db_column='id_tipo_plato_p')
+    
+    def __str__(self):
+        return f'{self.nombre_plato} {self.id_plato}' 
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'PLATO'
         unique_together = (('id_plato', 'id_tipo_plato_p'),)
 
@@ -248,7 +301,7 @@ class PlatMin(models.Model):
     id_min_pm = models.ForeignKey(Minuta, models.DO_NOTHING, db_column='id_min_pm', blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'PLAT_MIN'
 
 
@@ -262,8 +315,11 @@ class Producto(models.Model):
     id_sku_p = models.ForeignKey('SkuProducto', models.DO_NOTHING, db_column='id_sku_p', blank=True, null=True)
     id_plato_p = models.ForeignKey(Plato, models.DO_NOTHING, db_column='id_plato_p', blank=True, null=True)
 
+    def __str__(self):
+        return f'{self.descripcion} {self.id_producto}' 
+
     class Meta:
-        managed = False
+        managed = True
         db_table = 'PRODUCTO'
 
 
@@ -274,9 +330,13 @@ class Proveedor(models.Model):
     telefono = models.CharField(max_length=45)
     direccion = models.CharField(max_length=200)
     rubro = models.CharField(max_length=200, blank=True, null=True)
+    
+    def __str__(self):
+        return f'Proveedor: {self.nombre_prov} {self.id_proveedor}' 
 
     class Meta:
-        managed = False
+        verbose_name_plural = 'Proveedores'
+        managed = True
         db_table = 'PROVEEDOR'
 
 
@@ -286,7 +346,7 @@ class Servicio(models.Model):
     id_factura_s = models.ForeignKey(Factura, models.DO_NOTHING, db_column='id_factura_s', blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'SERVICIO'
 
 
@@ -299,7 +359,7 @@ class SkuProducto(models.Model):
     id_tipo_producto_s = models.ForeignKey('TipoProd', models.DO_NOTHING, db_column='id_tipo_producto_s')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'SKU_PRODUCTO'
         unique_together = (('id_sku', 'id_familia_s', 'id_tipo_producto_s'),)
 
@@ -307,27 +367,36 @@ class SkuProducto(models.Model):
 class TipoCama(models.Model):
     id_tipo_cama = models.IntegerField(primary_key=True)
     tipo_cama = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return f'{self.tipo_cama} {self.id_tipo_cama}' 
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'TIPO_CAMA'
 
 
 class TipoContrato(models.Model):
     id_tipo_contrato = models.IntegerField(primary_key=True)
     tipo_contrato = models.CharField(max_length=45)
+    
+    def __str__(self):
+        return f'{self.tipo_contrato} {self.id_tipo_contrato}' 
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'TIPO_CONTRATO'
 
 
 class TipoHab(models.Model):
     id_tipo_hab = models.IntegerField(primary_key=True)
     tipo_hab = models.CharField(max_length=45)
+    
+    def __str__(self):
+        return f'{self.tipo_hab} {self.id_tipo_hab}' 
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'TIPO_HAB'
 
 
@@ -335,8 +404,11 @@ class TipoPlato(models.Model):
     id_tipo_plato = models.IntegerField(primary_key=True)
     tipo_plato = models.CharField(max_length=45)
 
+    def __str__(self):
+        return f'{self.tipo_plato} {self.id_tipo_plato}' 
+
     class Meta:
-        managed = False
+        managed = True
         db_table = 'TIPO_PLATO'
 
 
@@ -345,7 +417,7 @@ class TipoProd(models.Model):
     tipo_prod = models.CharField(max_length=100)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'TIPO_PROD'
 
 
@@ -357,6 +429,9 @@ class Usuario(models.Model):
     pwd = models.CharField(max_length=45)
     id_estado_u = models.ForeignKey(EstadoUsuario, models.DO_NOTHING, db_column='id_estado_u', blank=True, null=True)
 
+    def __str__(self):
+        return f'Usuario: {self.nombre_usuario}' 
+
     class Meta:
-        managed = False
+        managed = True
         db_table = 'USUARIO'

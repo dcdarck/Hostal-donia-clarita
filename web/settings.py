@@ -41,11 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'admin_hostal',
     'bases',
-    #'cliente',
-    #'empleado',
-    #'proveedor',
-    #'huesped',
-    #'factura',
+    'cliente',
+    'empleado',
+    'proveedor',
+    'huesped',
+    'factura',
     'django_userforeignkey'
 ]
 

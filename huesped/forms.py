@@ -1,5 +1,5 @@
 from django import forms
-from .models import Huesped
+from admin_hostal.models import Huesped
 
 
 class HuespedForm(forms.ModelForm):

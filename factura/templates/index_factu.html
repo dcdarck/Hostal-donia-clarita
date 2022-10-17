@@ -29,18 +29,12 @@
 
                 {% for Factura in Facturas %}
                 <tr>
-                    <td>{{ Factura.id_Factura }}</td>
+                    <td>{{ Factura.id_factura }}</td>
                     <td>{{ Factura.fecha }}</td>
                     <td>{{ Factura.nombre_empresa }}</td>
                     <td>{{ Factura.subtotal }}</td>
                     <td>{{ Factura.iva }}</td>
-                    <td>{{ Factura.total }}</td>
-
-
-
-
-                    <td>
-                        <a name="" id="" class="btn btn-danger" href="{% url 'factura:eliminarFact' Factura.id_Factura %}" role="button">Eliminar</a>
+                    <td>{{ Factura.total }}</td>                  
                     </td>
                 </tr>
                 {% endfor %}
@@ -57,6 +51,8 @@
         </table>
 
     </div>
+
+    
     <div class="card-footer text-muted">
     </div>
 </div>

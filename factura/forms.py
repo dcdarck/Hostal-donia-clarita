@@ -1,6 +1,6 @@
 from django import forms
 
-from factura.models import Factura
+from admin_hostal.models import Factura
 
 class FacturaForm(forms.ModelForm): 
     class Meta:

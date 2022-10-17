@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ValidationError
-from .models import Proveedor
+from admin_hostal.models import Proveedor
 
 class ProveedorForm(forms.ModelForm): 
     nombre_prov = forms.CharField(min_length=3, max_length=35)
