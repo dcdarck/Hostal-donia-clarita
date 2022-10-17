@@ -8,12 +8,13 @@ from bases.views import SinPrivilegios
 from admin_hostal.models import Huesped
 from .forms import HuespedForm
 
-    
+@login_required(login_url='/login/')   
 def huespedes(request):
     Huespedes = Huesped.objects.all()
     print (Huespedes)
     return render(request, 'index_hues.html', {'Huespedes' : Huespedes})
 
+@login_required(login_url='/login/')
 def crearHues(request):
     formulario = HuespedForm(request.POST or None, request.FILES or None)
     if formulario.is_valid():
@@ -22,6 +23,7 @@ def crearHues(request):
         return redirect('huesped:huespedes')
     return render(request, 'crear_hues.html', {'formulario': formulario})
 
+@login_required(login_url='/login/')
 def editarHues(request, id):
     huesped = Huesped.objects.get(id_huesped=id)
     formulario = HuespedForm(request.POST or None, request.FILES or None, instance=huesped)
@@ -31,6 +33,7 @@ def editarHues(request, id):
         return redirect('huesped:huespedes')
     return render(request, 'editar_hues.html', {'formulario': formulario})          
 
+@login_required(login_url='/login/')
 def eliminarHues(request, id):
     huespedes = Huesped.objects.get(id_huesped=id)
     if huespedes.delete():

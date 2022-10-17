@@ -3,7 +3,7 @@ from django.forms import ValidationError
 from admin_hostal.models import Proveedor
 
 class ProveedorForm(forms.ModelForm): 
-    nombre_prov = forms.CharField(min_length=3, max_length=35)
+    nombre_prov = forms.CharField(label= "Nombre proveedor", min_length=3, max_length=35)
     email = forms.EmailField(min_length=3, max_length=100)
     telefono = forms.IntegerField() 
     direccion = forms.CharField(min_length=3, max_length=75)

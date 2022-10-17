@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'proveedor',
     'huesped',
     'factura',
-    'django_userforeignkey'
+    'django_userforeignkey',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [

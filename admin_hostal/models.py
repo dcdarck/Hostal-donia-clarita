@@ -52,7 +52,7 @@ class Cliente(models.Model):
     id_contrato_c = models.ForeignKey('Contrato', models.DO_NOTHING, db_column='id_contrato_c', blank=True, null=True)
 
     def __str__(self):
-        return f'Cliente: {self.id_cliente} {self.nombre_empresa}' 
+        return f'Cliente: {self.nombre_empresa} {self.id_cliente}' 
 
     class Meta:
         verbose_name_plural = "Clientes"
