@@ -3,7 +3,7 @@
   {% csrf_token %}
   {% for campo in formulario %}
     <div class="mb-3">
-      <label for="" class="form-label">{{ campo.label }}:</label>
+      <label for="" class="form-label">{{ campo.label }}</label>
 
       <input 
       type="{{ campo.field.widget.input_type }}"
