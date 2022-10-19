@@ -285,7 +285,9 @@ class Plato(models.Model):
     id_plato = models.AutoField(primary_key=True)
     nombre_plato = models.CharField(max_length=45)
     id_tipo_plato_p = models.ForeignKey('TipoPlato', models.DO_NOTHING, db_column='id_tipo_plato_p')
-    
+    id_producto_p = models.ForeignKey('Producto', models.DO_NOTHING, db_column='id_producto_p', blank=True, null=True)
+
+
     def __str__(self):
         return f'{self.nombre_plato} {self.id_plato}' 
 
@@ -313,7 +315,6 @@ class Producto(models.Model):
     stock = models.IntegerField()
     stock_critico = models.IntegerField()
     id_sku_p = models.ForeignKey('SkuProducto', models.DO_NOTHING, db_column='id_sku_p', blank=True, null=True)
-    id_plato_p = models.ForeignKey(Plato, models.DO_NOTHING, db_column='id_plato_p', blank=True, null=True)
 
     def __str__(self):
         return f'{self.descripcion} {self.id_producto}' 
