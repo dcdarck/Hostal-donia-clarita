@@ -5,6 +5,8 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+from http import client
+from tabnanny import verbose
 from django.db import models
 
 
@@ -42,17 +44,20 @@ class Cargo(models.Model):
 
 class Cliente(models.Model):
     id_cliente = models.AutoField(primary_key=True)
-    rut_empresa = models.CharField(max_length=45)
-    nombre_empresa = models.CharField(max_length=100)
+    rut_empresa = models.CharField(max_length=45, verbose_name='Rut Empresa')
+    nombre_empresa = models.CharField(max_length=100, verbose_name='Nombre Empresa')
     razon_social = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     telefono = models.CharField(max_length=45)
     direccion = models.CharField(max_length=200)
-    id_usuario_c = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='id_usuario_c', blank=True, null=True)
-    id_contrato_c = models.ForeignKey('Contrato', models.DO_NOTHING, db_column='id_contrato_c', blank=True, null=True)
+    id_usuario_c = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='id_usuario_c', blank=True, null=True, verbose_name='Usuario')
+    id_contrato_c = models.ForeignKey('Contrato', models.DO_NOTHING, db_column='id_contrato_c', blank=True, null=True, verbose_name='Contrato')
+
+    def nombre(self):
+        return "{}, {}".format(self.nombre_empresa,self.rut_empresa)
 
     def __str__(self):
-        return f'Cliente: {self.nombre_empresa} {self.id_cliente}' 
+        return self.nombre()
 
     class Meta:
         verbose_name_plural = "Clientes"
@@ -194,7 +199,9 @@ class Habitacion(models.Model):
     id_tipo_cama_h = models.ForeignKey('TipoCama', models.DO_NOTHING, db_column='id_tipo_cama_h', blank=True, null=True)
     
     def __str__(self):
-        return f'Habitación Nro: {self.num_habitacion} ${self.precio}' 
+        return f'Habitación Nro: {self.num_habitacion} - ${self.precio}' 
+    
+    
 
     class Meta:
         verbose_name_plural = 'Habitaciones'
@@ -221,13 +228,13 @@ class Huesped(models.Model):
     s_apellido = models.CharField(max_length=100, blank=True, null=True)
     email = models.CharField(max_length=100)
     telefono = models.CharField(max_length=45)
-    id_cliente_h = models.IntegerField()
+    id_cliente_h = models.ForeignKey('Cliente', models.DO_NOTHING, db_column='id_cliente_h', blank=True, null=True)
     num_orden_h = models.ForeignKey('OrdenCompra', models.DO_NOTHING, db_column='num_orden_h', blank=True, null=True)
     num_habitacion_h = models.ForeignKey(Habitacion, models.DO_NOTHING, db_column='num_habitacion_h', blank=True, null=True)
     id_minuta_h = models.ForeignKey('Minuta', models.DO_NOTHING, db_column='id_minuta_h', blank=True, null=True)
 
     def __str__(self):
-        return f'Huesped: {self.nombre} {self.p_apellido}' 
+        return f'{self.nombre} {self.p_apellido}, {self.num_habitacion_h}' 
     
     class Meta:
         verbose_name_plural = 'Huespedes'
