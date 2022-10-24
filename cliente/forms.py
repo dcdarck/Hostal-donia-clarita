@@ -3,7 +3,6 @@ from admin_hostal.models import Cliente, Contrato
 
 
 class ClienteForm(forms.ModelForm):   
- 
     class Meta:
         model = Cliente
         fields = ['rut_empresa', 'nombre_empresa', 'razon_social', 'email', 'telefono','direccion',
@@ -29,9 +28,13 @@ class ClienteForm(forms.ModelForm):
             'email': forms.EmailInput(),
             'telefono': forms.TextInput(),
             'direccion': forms.TextInput(),
-            'id_contrato_c': forms.ModelChoiceField(Contrato.objects.exclude()),
+            'id_contrato_c': forms.ModelChoiceField(Contrato.objects.all()),
             'id_usuario_c': forms.TextInput()   
                     
         }
+        
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.fields['id_contrato'].queryset = Contrato.objects.none()
         
         

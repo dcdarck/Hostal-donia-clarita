@@ -5,6 +5,7 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+from email.policy import default
 from http import client
 from tabnanny import verbose
 from django.db import models
@@ -50,7 +51,7 @@ class Cliente(models.Model):
     email = models.CharField(max_length=100)
     telefono = models.CharField(max_length=45)
     direccion = models.CharField(max_length=200)
-    id_usuario_c = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='id_usuario_c', blank=True, null=True, verbose_name='Usuario')
+    id_usuario_c = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='id_usuario_c', blank=True, null=True, verbose_name='Usuario', default=1)
     id_contrato_c = models.ForeignKey('Contrato', models.DO_NOTHING, db_column='id_contrato_c', blank=True, null=True, verbose_name='Contrato')
 
     def nombre(self):
