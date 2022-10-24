@@ -20,21 +20,18 @@ class ClienteForm(forms.ModelForm):
         }
 
         widgets = {
-            'nombre': forms.TextInput(),
-            'apellidos': forms.TextInput(),
-            'rut_empresa': forms.TextInput(),
-            'nombre_empresa': forms.TextInput(),
-            'razon_social': forms.TextInput(),
-            'email': forms.EmailInput(),
-            'telefono': forms.TextInput(),
-            'direccion': forms.TextInput(),
-            'id_contrato_c': forms.ModelChoiceField(Contrato.objects.all()),
-            'id_usuario_c': forms.TextInput()   
+           # 'nombre': forms.TextInput(),
+           # 'apellidos': forms.TextInput(),
+           # 'rut_empresa': forms.TextInput(),
+           # 'nombre_empresa': forms.TextInput(),
+           # 'razon_social': forms.TextInput(),
+           # 'email': forms.EmailInput(),
+           # 'telefono': forms.TextInput(),
+           # 'direccion': forms.TextInput(),
+           # 'id_contrato_c': forms.ModelChoiceField(Contrato.objects.all()),
+           # 'id_usuario_c': forms.TextInput()   
                     
         }
         
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.fields['id_contrato'].queryset = Contrato.objects.none()
-        
+
         
